@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import '../pages/notifications.dart';
+import '../pages/profile.dart';
 
 class Appbar extends StatelessWidget {
   const Appbar({super.key});
@@ -15,15 +17,32 @@ class Appbar extends StatelessWidget {
           Row(mainAxisAlignment: MainAxisAlignment.spaceAround, children: [
             Padding(
               padding: const EdgeInsets.only(right: 10),
-              child: Icon(
-                Icons.notifications_none,
-                color: Colors.black,
-                size: 30,
+              child: GestureDetector(
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => NotificationsPage()),
+                  );
+                },
+                child: Icon(
+                  Icons.notifications_none,
+                  color: Colors.black,
+                  size: 30,
+                ),
               ),
             ),
             Padding(
               padding: const EdgeInsets.only(left: 10),
-              child: SvgPicture.asset('image/icons/profile.svg'),
+              child: GestureDetector(
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => ProfilePage()),
+                  );
+                },
+                child: SvgPicture.asset('image/icons/profile.svg'),
+              ),
             ),
           ])
         ],
